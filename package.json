@@ -1,0 +1,29 @@
+{
+  "name": "yodaplus-base-template",
+  "version": "1.0.0",
+  "description": "Yodaplus Base Template (React, Django, Celery, Web3)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker": "docker-compose   -f infra/docker-compose.base.yml   -f infra/docker-compose.build.yml   -f infra/docker-compose.dev.yml   --project-name yodaplus-base-dev   --project-directory ./"
+  },
+  "workspaces": [
+    "frontend",
+    "dapps-lib",
+    "injected-connector"
+  ],
+  "keywords": [
+    "react",
+    "Django",
+    "web3",
+    "blockchain",
+    "celery",
+    "REST",
+    "JS"
+  ],
+  "author": "Yodaplus Dev",
+  "license": "ISC",
+  "scripts": {
+    "docker": "docker-compose   -f infra/docker-compose.base.yml   -f infra/docker-compose.build.yml   -f infra/docker-compose.dev.yml   --project-name template-dev   --project-directory ./"
+  }
+}
