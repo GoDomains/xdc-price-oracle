@@ -20,9 +20,3 @@ x-aws-cloudformation:
         Certificates:
           - CertificateArn: 'arn:aws:acm:ap-south-1:135135176603:certificate/d2f8512c-0190-43e8-aa45-240a33efbb6c' #replace your deployment certificate from aws certificate manager
         Protocol: HTTPS
-
-    FrontendTCP443Listener:
-      Properties:
-        Certificates:
-          - CertificateArn: 'arn:aws:acm:ap-south-1:135135176603:certificate/d2f8512c-0190-43e8-aa45-240a33efbb6c' #replace your deployment certificate from aws certificate manager
-        Protocol: HTTPS

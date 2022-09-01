@@ -3,6 +3,7 @@ version: '3.8'
 volumes:
   postgres-data:
 
+
 services:
   db:
     image: postgres:10.20-alpine3.15
@@ -10,11 +11,6 @@ services:
       - postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
-  frontend:
-    environment:
-      REACT_APP_NETWORK_ID: ${NETWORK_ID}
-      REACT_APP_APP_VERSION: ${APP_VERSION}
 
   backend:
     depends_on:

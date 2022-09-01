@@ -5,14 +5,6 @@ services:
     build:
       context: docker/redis
 
-  frontend:
-    build:
-      context: .
-      dockerfile: docker/frontend/Dockerfile
-      args:
-        - REACT_APP_NETWORK_ID
-        - REACT_APP_APP_VERSION
-
   backend:
     build:
       context: .
