@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_ethereum_events',
     'eth',
-    'solo'
+    'solo',
+    'main'
 ]
 
 MIDDLEWARE = [
@@ -184,12 +185,17 @@ CELERY_BROKER_URL = env('CELERY_BROKER_URL',
                         default="redis://127.0.0.1:6379/0")
 
 CELERY_BEAT_SCHEDULE = {
-    'poll_blockchain': {
-        'task': 'django_ethereum_events.tasks.event_listener',
-        'schedule': 5.0,
+    # 'poll_blockchain': {
+    #     'task': 'django_ethereum_events.tasks.event_listener',
+    #     'schedule': 5.0,
+    #     'options': {'queue': 'eth_events_poll'}
+    # },
+    'poll_price':{
+        'task': 'main.tasks.poll_price',
+        'schedule': crontab(minute="*/5"),
         'options': {'queue': 'eth_events_poll'}
-    },
 
+    }
 }
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
@@ -199,3 +205,7 @@ ETHEREUM_NODE_URI = env('ETHEREUM_NODE_URI',
 
 ETHEREUM_GETH_POA = True
 NETWORK_ID = env('NETWORK_ID', default='51')
+ORACLE_CONTRACT_ABI = readFileJSON(
+    '../../dapps-lib/contracts/Oracle.json')['abi']
+ORACLE_CONTRACT_ADDRESS = env('ORACLE_CONTRACT_ADDRESS', default='0xadc6B40b0178D0D319E24ffa1Da0E2549B2054ae')
+PRIVATE_KEY = env('MNEMONIC', default='')

@@ -8,9 +8,7 @@
     "docker": "docker-compose   -f infra/docker-compose.base.yml   -f infra/docker-compose.build.yml   -f infra/docker-compose.dev.yml   --project-name yodaplus-base-dev   --project-directory ./"
   },
   "workspaces": [
-    "frontend",
-    "dapps-lib",
-    "injected-connector"
+    "dapps-lib"
   ],
   "keywords": [
     "react",
@@ -24,6 +22,6 @@
   "author": "Yodaplus Dev",
   "license": "ISC",
   "scripts": {
-    "docker": "docker-compose   -f infra/docker-compose.base.yml   -f infra/docker-compose.build.yml   -f infra/docker-compose.dev.yml   --project-name template-dev   --project-directory ./"
+    "docker": "docker-compose   -f infra/docker-compose.base.yml   -f infra/docker-compose.build.yml   -f infra/docker-compose.dev.yml   --project-name xdc-pricing   --project-directory ./"
   }
 }
