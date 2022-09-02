@@ -37,7 +37,6 @@ jobs:
         with:
           path: |
             /tmp/.buildx-cache-redis
-            /tmp/.buildx-cache-frontend
             /tmp/.buildx-cache-backend
           key: ${{ runner.os }}-xdc-price-oracle-buildx-${{ github.sha }}
           restore-keys: |
@@ -54,19 +53,6 @@ jobs:
           tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-redis:latest
           cache-from: type=local,src=/tmp/.buildx-cache-redis
           cache-to: type=local,dest=/tmp/.buildx-cache-redis-new,mode=max
-
-      # - name: Build frontend
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     build-args: |
-      #       REACT_APP_NETWORK_ID=${{ env.NETWORK_ID }}
-      #       REACT_APP_APP_VERSION=${{ hashFiles('./package-lock.json', './xdc-price-oracle-frontend/**', './dapps-lib/**', './injected-connector/**') }}
-      #     file: docker/frontend/Dockerfile
-      #     push: true
-      #     tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-frontend:aprod
-      #     cache-from: type=local,src=/tmp/.buildx-cache-frontend
-      #     cache-to: type=local,dest=/tmp/.buildx-cache-frontend-new,mode=max
 
       - name: Build backend
         uses: docker/build-push-action@v2

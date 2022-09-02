@@ -33,9 +33,3 @@ x-aws-cloudformation:
         HealthCheckPath: /
         Matcher:
           HttpCode: 200-499
-
-    FrontendTCP443TargetGroup:
-      Properties:
-        HealthCheckPath: /
-        Matcher:
-          HttpCode: 200-499
