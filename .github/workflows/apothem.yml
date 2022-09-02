@@ -81,10 +81,8 @@ jobs:
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache-redis
-          rm -rf /tmp/.buildx-cache-frontend
           rm -rf /tmp/.buildx-cache-backend
           mv /tmp/.buildx-cache-redis-new /tmp/.buildx-cache-redis
-          mv /tmp/.buildx-cache-frontend-new /tmp/.buildx-cache-frontend
           mv /tmp/.buildx-cache-backend-new /tmp/.buildx-cache-backend
 
   publish:
