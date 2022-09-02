@@ -7,13 +7,12 @@ docker-compose \
   -f infra/docker-compose.base.yml \
   -f infra/docker-compose.build.yml \
   -f infra/docker-compose.tags.yml \
-  --project-name tokenization-platform \
+  --project-name xdc-price-oracle \
   --project-directory ./ \
   build
 
-docker push 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-frontend:latest
-docker push 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-backend:latest
-docker push 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-redis:latest
+docker push 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-backend:latest
+docker push 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-redis:latest
 
 docker context use yodaplus
 
@@ -23,7 +22,7 @@ docker compose \
   -f infra/docker-compose.base.yml \
   -f infra/docker-compose.tags.yml \
   -f infra/docker-compose.ecs.yml \
-  --project-name tokenization-platform \
+  --project-name xdc-price-oracle \
   --project-directory ./ \
   up
 

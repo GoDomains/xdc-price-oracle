@@ -9,7 +9,7 @@ python manage.py migrate --noinput
 
 # echo "==> $(date +%H:%M:%S) ==> Initializing Django admin account.. "
 
-# python manage.py initadmin
+python manage.py initadmin
 
 # echo "==> $(date +%H:%M:%S) ==> Initializing Monitored contract events.. "
 

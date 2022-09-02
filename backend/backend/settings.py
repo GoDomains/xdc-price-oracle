@@ -178,8 +178,8 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 ADMIN_EMAIL = env('ADMIN_EMAIL', default="admin")
-ADMIN_XINFIN_ACCOUNT = parseAddress(
-    env('ADMIN_XINFIN_ACCOUNT', default="0x3c2070a2e512dd97881df8fa0af8f9889872fcad"))
+# ADMIN_XINFIN_ACCOUNT = parseAddress(
+#     env('ADMIN_XINFIN_ACCOUNT', default="0x3c2070a2e512dd97881df8fa0af8f9889872fcad"))
 ADMIN_PASSWORD = env('ADMIN_PASSWORD', default="admin123")
 CELERY_BROKER_URL = env('CELERY_BROKER_URL',
                         default="redis://127.0.0.1:6379/0")

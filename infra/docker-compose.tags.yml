@@ -3,13 +3,13 @@ version: '3.8'
 services:
   # Create your ECR service and replace the image name with your own
   redis:
-    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-redis:latest
+    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-redis:latest
 
   backend:
-    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-backend:latest
+    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-backend:latest
 
   celery-worker:
-    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-backend:latest
+    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-backend:latest
 
   celery-beat:
-    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-backend:latest
+    image: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-backend:latest

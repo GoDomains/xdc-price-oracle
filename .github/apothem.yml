@@ -17,6 +17,8 @@ env:
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   ETHEREUM_NODE_URI: https://rpc-apothem.xinfin.yodaplus.net
   NETWORK_ID: '51'
+  ORACLE_CONTRACT_ADDRESS: '0xBe496913258b7554fD4563d1753c4927B12C7298'
+  MNEMONIC: ${{ secrets.MNEMONIC }}
   STATIC_URL: https://tokenization-apothem-prod.yodaplus.net/django/staticfiles/
 
 jobs:
@@ -37,9 +39,9 @@ jobs:
             /tmp/.buildx-cache-redis
             /tmp/.buildx-cache-frontend
             /tmp/.buildx-cache-backend
-          key: ${{ runner.os }}-tokenization-buildx-${{ github.sha }}
+          key: ${{ runner.os }}-xdc-price-oracle-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-tokenization-buildx-
+            ${{ runner.os }}-xdc-price-oracle-buildx-
 
       - name: ECR docker login
         run: aws ecr get-login-password | docker login --username AWS --password-stdin 135135176603.dkr.ecr.ap-south-1.amazonaws.com
@@ -49,22 +51,22 @@ jobs:
         with:
           context: docker/redis
           push: true
-          tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-redis:aprod
+          tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-redis:latest
           cache-from: type=local,src=/tmp/.buildx-cache-redis
           cache-to: type=local,dest=/tmp/.buildx-cache-redis-new,mode=max
 
-      - name: Build frontend
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          build-args: |
-            REACT_APP_NETWORK_ID=${{ env.NETWORK_ID }}
-            REACT_APP_APP_VERSION=${{ hashFiles('./package-lock.json', './tokenization-platform-frontend/**', './dapps-lib/**', './injected-connector/**') }}
-          file: docker/frontend/Dockerfile
-          push: true
-          tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-frontend:aprod
-          cache-from: type=local,src=/tmp/.buildx-cache-frontend
-          cache-to: type=local,dest=/tmp/.buildx-cache-frontend-new,mode=max
+      # - name: Build frontend
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     build-args: |
+      #       REACT_APP_NETWORK_ID=${{ env.NETWORK_ID }}
+      #       REACT_APP_APP_VERSION=${{ hashFiles('./package-lock.json', './xdc-price-oracle-frontend/**', './dapps-lib/**', './injected-connector/**') }}
+      #     file: docker/frontend/Dockerfile
+      #     push: true
+      #     tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-frontend:aprod
+      #     cache-from: type=local,src=/tmp/.buildx-cache-frontend
+      #     cache-to: type=local,dest=/tmp/.buildx-cache-frontend-new,mode=max
 
       - name: Build backend
         uses: docker/build-push-action@v2
@@ -72,7 +74,7 @@ jobs:
           context: .
           file: docker/backend/Dockerfile
           push: true
-          tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/tokenization-platform-backend:aprod
+          tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-backend:latest
           cache-from: type=local,src=/tmp/.buildx-cache-backend
           cache-to: type=local,dest=/tmp/.buildx-cache-backend-new,mode=max
 
@@ -112,6 +114,6 @@ jobs:
           -f infra/docker-compose.tags-apothem-prod.yml
           -f infra/docker-compose.ecs.yml
           -f infra/docker-compose.ecs-apothem-prod.yml
-          --project-name tokenization-platform-apothem-sandbox
+          --project-name xdc-price-oracle-apothem
           --project-directory ./
           up || true
