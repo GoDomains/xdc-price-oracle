@@ -1,9 +1,9 @@
-name: CI Apothem
+name: XDC-Price-Oracle Apothem
 
 on:
   push:
     branches:
-      - apothem
+      - master
   workflow_dispatch:
 
 env:
