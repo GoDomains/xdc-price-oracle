@@ -72,6 +72,7 @@ sqlparse==0.4.2
 toolz==0.12.0
 tzdata==2022.1
 uritemplate==4.1.1
+uWSGI==2.0.20
 varint==1.0.2
 vine==5.0.0
 wcwidth==0.2.5

@@ -3,15 +3,16 @@ version: '3.8'
 volumes:
   django-static:
 
-
 services:
-
   backend:
     environment:
       DJANGO_ALLOWED_HOSTS: '*'
-      STATIC_URL: ${STATIC_URL}
-    volumes:
-      - django-static:/static
+      # STATIC_URL: ${STATIC_URL}
+    # volumes:
+    #   - django-static:/static
+    ports:
+      - '80:8000'
+      - '443:8000'
     command: ./docker/backend/run.prod.sh
 
 x-aws-cloudformation:
