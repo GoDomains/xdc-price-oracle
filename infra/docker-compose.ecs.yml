@@ -11,7 +11,7 @@ services:
     # volumes:
     #   - django-static:/static
     ports:
-      - '80:8000'
+      # - '80:8000'
       # - '443:8000'
     command: ./docker/backend/run.prod.sh
 
