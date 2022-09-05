@@ -18,8 +18,8 @@ def poll_price():
         web3 = Web3Service().web3
         ABI = settings.ORACLE_CONTRACT_ABI
         ADDRESS = settings.ORACLE_CONTRACT_ADDRESS
-        print(ADDRESS)
-        print(ABI)
+        print(f'ABI: {ABI}')
+        print(f'ADDRESS: {ADDRESS}')
         token_contract = web3.eth.contract(address=ADDRESS, abi=ABI)
         PRIVATE_KEY = settings.PRIVATE_KEY
     except Exception as e:
