@@ -16,7 +16,7 @@ services:
       - redis
       - db
     ports:
-      - target: 80
+      - target: 8000
         published: 8000
         x-aws-protocol: http
     environment:
