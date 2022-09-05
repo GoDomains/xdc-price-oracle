@@ -14,12 +14,18 @@ CURRENCY_RATE = 0
 @shared_task
 def poll_price():
 
-    web3 = Web3Service().web3
-    ABI = settings.ORACLE_CONTRACT_ABI
-    ADDRESS = settings.ORACLE_CONTRACT_ADDRESS
-   
-    token_contract = web3.eth.contract(address=ADDRESS, abi=ABI)
-    PRIVATE_KEY = settings.PRIVATE_KEY
+    try:
+        web3 = Web3Service().web3
+        ABI = settings.ORACLE_CONTRACT_ABI
+        ADDRESS = settings.ORACLE_CONTRACT_ADDRESS
+        print(ADDRESS)
+        print(ABI)
+        token_contract = web3.eth.contract(address=ADDRESS, abi=ABI)
+        PRIVATE_KEY = settings.PRIVATE_KEY
+    except Exception as e:
+        print(f'❌An exception occured tasks.py❌: {e}')
+        return
+
 
     #  API CALL
     response = requests.get('https://api.coingecko.com/api/v3/simple/price?ids=xdce-crowd-sale&vs_currencies=usd')
