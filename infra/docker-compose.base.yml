@@ -3,7 +3,6 @@ version: '3.8'
 volumes:
   postgres-data:
 
-
 services:
   db:
     image: postgres:10.20-alpine3.15
@@ -17,7 +16,7 @@ services:
       - redis
       - db
     ports:
-      - target: 8000
+      - target: 80
         published: 8000
         x-aws-protocol: http
     environment:
