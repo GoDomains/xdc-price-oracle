@@ -20,7 +20,6 @@ def poll_price():
    
     token_contract = web3.eth.contract(address=ADDRESS, abi=ABI)
     PRIVATE_KEY = settings.PRIVATE_KEY
-    print("PRIVATE_KEY",PRIVATE_KEY)
 
     #  API CALL
     response = requests.get('https://api.coingecko.com/api/v3/simple/price?ids=xdce-crowd-sale&vs_currencies=usd')
