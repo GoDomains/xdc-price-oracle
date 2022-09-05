@@ -12,7 +12,7 @@ services:
     #   - django-static:/static
     ports:
       - '80:8000'
-      - '443:8000'
+      # - '443:8000'
     command: ./docker/backend/run.prod.sh
 
 x-aws-cloudformation:
