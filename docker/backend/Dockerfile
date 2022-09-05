@@ -11,6 +11,4 @@ COPY ./dapps-lib /dapps-lib
 COPY ./docker/backend ./docker/backend
 COPY ./docker/celery ./docker/celery
 
-EXPOSE 8000
-
 RUN python manage.py collectstatic --no-input
