@@ -207,5 +207,7 @@ ETHEREUM_GETH_POA = True
 NETWORK_ID = env('NETWORK_ID', default='51')
 ORACLE_CONTRACT_ABI = readFileJSON(
     '../../dapps-lib/contracts/Oracle.json')['abi']
-ORACLE_CONTRACT_ADDRESS = env('ORACLE_CONTRACT_ADDRESS', default='0xadc6B40b0178D0D319E24ffa1Da0E2549B2054ae')
+ORACLE_CONTRACT_ADDRESS = parseAddress(
+    env('ORACLE_CONTRACT_ADDRESS', default='0xadc6B40b0178D0D319E24ffa1Da0E2549B2054ae')
+)
 PRIVATE_KEY = env('MNEMONIC', default='')
