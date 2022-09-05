@@ -19,7 +19,7 @@ env:
   NETWORK_ID: '51'
   ORACLE_CONTRACT_ADDRESS: '0xBe496913258b7554fD4563d1753c4927B12C7298'
   MNEMONIC: ${{ secrets.MNEMONIC }}
-  STATIC_URL: https://tokenization-apothem-prod.yodaplus.net/django/staticfiles/
+  # STATIC_URL: https://tokenization-apothem-prod.yodaplus.net/django/staticfiles/
 
 jobs:
   build:
