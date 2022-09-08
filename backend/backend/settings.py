@@ -192,7 +192,7 @@ CELERY_BEAT_SCHEDULE = {
     # },
     'poll_price':{
         'task': 'main.tasks.poll_price',
-        'schedule': crontab(minute="*/5"),
+        'schedule': crontab(minute="*/10"),
         'options': {'queue': 'eth_events_poll'}
 
     }

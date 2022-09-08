@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      DEBUG: 'True'
+
+  celery-worker:
+    environment:
+      DEBUG: 'True'
+
+  celery-beat:
+    environment:
+      DEBUG: 'True'
+
+x-aws-cloudformation:
+  Resources:
+    Backend8000Listener:
+      Properties:
+        Certificates:
+          - CertificateArn: 'arn:aws:acm:ap-south-1:135135176603:certificate/cf01541c-a4ee-4e2f-9c08-eb321401859b' #replace your deployment certificate from aws certificate manager
+        Protocol: HTTPS
