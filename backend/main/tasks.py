@@ -37,7 +37,7 @@ def poll_price():
     nonce = web3.eth.getTransactionCount(account_1)
     # send transaction set method on contract
     tx_hash = token_contract.functions.set(CURRENCY_RATE).buildTransaction({
-        'chainId':51,
+        'chainId':50,
         'gas': 65000,
         'gasPrice': web3.toWei(10, 'gwei'),
         'from': account_1,
