@@ -4,6 +4,8 @@ services:
   redis:
     build:
       context: docker/redis
+      args:
+        - REDIS_PASSWORD
 
   backend:
     build:

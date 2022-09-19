@@ -19,6 +19,7 @@ env:
   NETWORK_ID: '50'
   ORACLE_CONTRACT_ADDRESS: '0xadc6B40b0178D0D319E24ffa1Da0E2549B2054ae'
   MNEMONIC: ${{ secrets.MNEMONIC }}
+  REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
   # STATIC_URL: https://tokenization-apothem-prod.yodaplus.net/django/staticfiles/
 
 jobs:
@@ -49,6 +50,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: docker/redis
+          build-args: |
+            REDIS_PASSWORD=${{ env.REDIS_PASSWORD }}
           push: true
           tags: 135135176603.dkr.ecr.ap-south-1.amazonaws.com/xdc-price-oracle-redis:mainnet
           cache-from: type=local,src=/tmp/.buildx-cache-redis
