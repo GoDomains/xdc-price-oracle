@@ -33,7 +33,7 @@ def poll_price():
     data = response.json()
     CURRENCY_RATE = data['xdce-crowd-sale']['usd']
     CURRENCY_RATE = int(CURRENCY_RATE * 10**18)
-    account_1 = "0xd1b8C6d6698b4484dAA008e1a03f51e1F1c8b1d5"
+    account_1 = "0x7d026723aba444c6dc8deed1c2d6c5e358c160bd"
     nonce = web3.eth.getTransactionCount(account_1)
     # send transaction set method on contract
     tx_hash = token_contract.functions.set(CURRENCY_RATE).buildTransaction({
